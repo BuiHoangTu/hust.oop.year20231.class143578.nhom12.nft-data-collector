@@ -2,6 +2,7 @@ package com.example.oop.controller;
 
 import com.example.oop.model.ModelBlog;
 import com.example.oop.service.CrawlerBlog;
+import com.example.oop.utils.SaveJson;
 import com.example.oop.views.HomeView;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -56,6 +57,7 @@ public class BlogController implements Initializable {
 
         this.tableViewMain.setItems(FXCollections.observableList(list));
 
+        new SaveJson().writeJson("Blog.json", list);
         // In chuỗi JSON ra màn hình
         System.out.println(jsonLog);
 

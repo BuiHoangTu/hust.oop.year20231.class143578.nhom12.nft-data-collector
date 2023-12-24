@@ -2,6 +2,7 @@ package com.example.oop.controller;
 
 import com.example.oop.model.ModelBinanceNFT;
 import com.example.oop.service.CrawlerBinanceNFT;
+import com.example.oop.utils.SaveJson;
 import com.example.oop.views.HomeView;
 import com.google.gson.GsonBuilder;
 import javafx.beans.property.ReadOnlyObjectWrapper;
@@ -63,6 +64,7 @@ public class BinanceNFTController implements Initializable {
 
         this.tableViewMain.setItems(FXCollections.observableList(list));
 
+        new SaveJson().writeJson("Binance.json", list);
         // In chuỗi JSON ra màn hình
         System.out.println(jsonLog);
 

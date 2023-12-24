@@ -2,6 +2,7 @@ package com.example.oop.controller;
 
 import com.example.oop.model.ModelTwitter;
 import com.example.oop.service.CrawlerTwitter;
+import com.example.oop.utils.SaveJson;
 import com.example.oop.views.HomeView;
 import com.google.gson.GsonBuilder;
 import javafx.beans.property.ReadOnlyObjectWrapper;
@@ -47,6 +48,8 @@ public class TwitterController implements Initializable {
         List<ModelTwitter> list = crawlerTwitter.crawlData();
 
         String jsonLog = new GsonBuilder().setPrettyPrinting().create().toJson(list);
+
+        new SaveJson().writeJson("Twitter.json", list);
 
         // In chuỗi JSON ra màn hình
         System.out.println(jsonLog);
