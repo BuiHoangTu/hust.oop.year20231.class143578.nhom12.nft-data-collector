@@ -44,7 +44,7 @@ public class TwitterController implements Initializable {
     @FXML
     void onTwitterButtonClick(ActionEvent ignored) throws IOException {
         CrawlerTwitter crawlerTwitter = new CrawlerTwitter();
-        List<ModelTwitter> list = crawlerTwitter.CrawlerTwitter();
+        List<ModelTwitter> list = crawlerTwitter.crawlData();
 
         String jsonLog = new GsonBuilder().setPrettyPrinting().create().toJson(list);
 

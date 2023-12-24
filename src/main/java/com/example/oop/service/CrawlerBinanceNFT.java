@@ -14,8 +14,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CrawlerBinanceNFT {
-    public List<ModelBinanceNFT> getPost() {
+public class CrawlerBinanceNFT implements Crawler {
+    public List<ModelBinanceNFT> crawlData() {
         List<ModelBinanceNFT> list=new ArrayList<>();
         try {
             String result = sendPOST("https://www.binance.com/bapi/nft/v1/friendly/nft/ranking/trend-collection");

@@ -49,7 +49,7 @@ public class BlogController implements Initializable {
     @FXML
     void onBlogButtonClick(ActionEvent event) throws IOException {
         CrawlerBlog crawlerBlog = new CrawlerBlog();
-        List<ModelBlog> list = crawlerBlog.CrawlerBlog();
+        List<ModelBlog> list = crawlerBlog.crawlData();
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String jsonLog = gson.toJson(list);

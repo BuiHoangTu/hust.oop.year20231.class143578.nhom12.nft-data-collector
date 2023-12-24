@@ -57,7 +57,7 @@ public class BinanceNFTController implements Initializable {
     @FXML
     void onBinanceNFTButtonClick(ActionEvent ignoredEvent) {
         CrawlerBinanceNFT callAPIBinance = new CrawlerBinanceNFT();
-        List<ModelBinanceNFT> list = callAPIBinance.getPost();
+        List<ModelBinanceNFT> list = callAPIBinance.crawlData();
 
         String jsonLog = new GsonBuilder().setPrettyPrinting().create().toJson(list);
 

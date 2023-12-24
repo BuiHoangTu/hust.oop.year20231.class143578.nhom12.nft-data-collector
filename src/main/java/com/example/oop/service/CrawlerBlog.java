@@ -10,14 +10,15 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CrawlerBlog {
+public class CrawlerBlog implements Crawler{
     Document document = Jsoup.connect("https://www.livemint.com/opinion/blogs").get();
     Elements elms = document.getElementsByClass("listView");
 
     public CrawlerBlog() throws IOException {
     }
 
-    public List<ModelBlog> CrawlerBlog() throws IOException {
+    @Override
+    public List<ModelBlog> crawlData() {
         List<ModelBlog> modelBlogList =new ArrayList<>();
 
         for (Element e:

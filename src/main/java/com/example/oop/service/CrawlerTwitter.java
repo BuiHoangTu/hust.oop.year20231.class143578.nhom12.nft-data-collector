@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CrawlerTwitter {
+public class CrawlerTwitter implements Crawler{
     Document document = Jsoup.connect("https://getdaytrends.com/").get();
     Elements elms = document.getElementsByClass("trends");
 
@@ -18,17 +18,17 @@ public class CrawlerTwitter {
     }
 
 
-
-    public List<ModelTwitter> CrawlerTwitter() throws IOException {
+    @Override
+    public List<ModelTwitter> crawlData() {
         List<ModelTwitter> modelTwitterList =new ArrayList<>();
         for (Element e:
              elms) {
             Elements elms = document.getElementsByTag("tbody");
-            for (int i = 0; i < elms.size(); i++) {
-                Elements elm_row = elms.get(i).getElementsByClass("main");
-                for(int j=0 ; j< elm_row.size();j++){
+            for (Element elm : elms) {
+                Elements elm_row = elm.getElementsByClass("main");
+                for (Element element : elm_row) {
                     ModelTwitter model = new ModelTwitter();
-                    Elements elm_row_td_first =elm_row.get(j).getElementsByTag("a");
+                    Elements elm_row_td_first = element.getElementsByTag("a");
                     model.setLink(elm_row_td_first.first().absUrl("href"));
                     model.setHashTag(elm_row_td_first.first().text());
                     modelTwitterList.add(model);
